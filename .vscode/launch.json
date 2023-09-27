@@ -1,17 +1,7 @@
-# C Language Learn And Action
-
-## Command Line 执行方式
-
-```sh
-gcc -std=c11 [filename].c
-```
-
-## VSCode launch 配置
-- `"program": "${workspaceFolder}/chapter-2/a.exe",`
-  - 根据需要进行修改
-
-```json
 {
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
@@ -27,5 +17,3 @@ gcc -std=c11 [filename].c
     }
   ]
 }
-
-```
