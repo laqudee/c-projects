@@ -116,3 +116,7 @@
   - sizeof(double) // 8bytes
   - sizeof(long double) // 16bytes
   - sizeof(_Bool) // 1byte
+
+- 正确使用数据类型
+
+- 注意参数陷阱
