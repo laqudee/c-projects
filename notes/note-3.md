@@ -79,3 +79,40 @@
 - %llu
 
 - 使用printf()时，切记检查每个待打印值都有对应的转换说明，还要检查转换说明的类型是否与待打印的值的类型是否匹配
+
+- char 类型从技术层面是整数类型，因为存储的是整数而非字符
+  - 8位存储
+  - 16位
+  - 32wei
+
+- 单引号是字符，双引号是字符串
+- 16进制表示字符
+  - `char beep = '\oo7'`
+  - `char a = '\x10'`
+- 打印字符
+  - %c
+
+- 有的C编译器将char表示为有符号类型，可表示范围-128~127
+- 有的C编译器将char标识为无符号类型，0~255
+
+- 可移植类型
+  - stdint.h
+  - inttypes.h
+
+- 最小宽度类型
+- 最快最小宽度类型
+
+- float
+- double
+- long double
+
+- %zd
+- sizeof(type) // sizeof是C语言的内置运算符，以字节为单位给出指定类型的大小
+  - sizeof(int) // 4bytes
+  - sizeof(char) // 1byte
+  - sizeof(long) // 4bytes
+  - sizeof(long long) // 8bytes
+  - sizeof(float) // 4bytes
+  - sizeof(double) // 8bytes
+  - sizeof(long double) // 16bytes
+  - sizeof(_Bool) // 1byte
