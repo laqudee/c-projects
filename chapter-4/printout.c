@@ -1,6 +1,8 @@
 #include <stdio.h>
 #define PI 3.141593
 
+void width(void);
+
 int main(void)
 {
     int number = 7;
@@ -11,5 +13,16 @@ int main(void)
     printf("Tarewell! thou art too dear for my possessing, \n");
     printf("%c%d\n", '$', 2 * cost);
 
+    width();
+
     return 0;
+}
+
+void width(void)
+{
+    const int PAGES = 959;
+    printf("*%d*\n", PAGES);
+    printf("*%2d*\n", PAGES);
+    printf("*%10d*\n", PAGES);
+    printf("*%-10d*\n", PAGES);
 }
