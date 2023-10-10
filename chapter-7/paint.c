@@ -5,7 +5,7 @@ int main(void)
 {
     int sq_feet, cans;
     printf("Enter the number of square feet: ");
-    while(scanf("%d", &sq_feet) == 1)
+    while (scanf("%d", &sq_feet) == 1)
     {
         cans = sq_feet / COVERAGE;
         cans += ((sq_feet % COVERAGE) == 0) ? 0 : 1;
