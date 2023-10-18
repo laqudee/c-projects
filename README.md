@@ -4,6 +4,9 @@
 
 ```sh
 gcc -std=c11 [filename].c
+
+# windows
+.\a.exe
 ```
 
 ## VSCode launch 配置
