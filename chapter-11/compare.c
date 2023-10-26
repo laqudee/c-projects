@@ -8,7 +8,7 @@
 int main(void)
 {
     char try[SIZE];
-    puts("Who is buried in Grant's tomb?");
+    puts("Who is buried in GRANT's tomb?");
     s_gets(try, SIZE);
     while (strcmp(try, ANSWER)) // 非零值都为真
     {

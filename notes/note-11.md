@@ -93,8 +93,11 @@ char greeting[50] = "Hello, and how are you today!";
   - strlen()，返回字符串长度
   - strcat()，连接字符串
   - strncat(bugs, addon, 13)
-  - strcmp()
-  - strncmp()
-  - strcpy()
-  - strncpy()
-  - sprintf()
+  - strcmp()， 比较的是字符串而不是整个数组；
+  - strncmp(stra, strb, n)
+  - strcpy()，字符串拷贝
+  - strncpy(target, source, n)，字符串拷贝，更谨慎的选择
+  - sprintf()，声明在stdio，和printf类似，但是它是把数据写入字符串
+
+- strcpy()返回的类型是char *，该函数返回的是第一个参数的值，即一个字符的地址
+- 第一个参数不必指向数组的开始
