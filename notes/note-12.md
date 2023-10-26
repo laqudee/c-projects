@@ -280,3 +280,16 @@ ar[1][2] = p2[1][2] = 12;
 - 静态数据占用一个区域
 - 自动数据占用另一个区域
 - 动态分配的数据占用自由内存
+
+- 恒常性constancy，const
+- 易变性volatility，volatile
+
+- 限定类型
+
+- restrict
+
+- _Atomic
+
+- stdatomic.h
+
+- 幂等性idempotent
