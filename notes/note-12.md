@@ -178,4 +178,105 @@ extern double delate(double, int);
 
 - 随机数函数与静态变量
 
--time()
+- time()
+
+- malloc()
+- free()
+
+- 库函数分配和管理内存
+- 所有程序都必须预留足够的内存来存储程序使用的数据，内存中有些是自动分配。
+
+- malloc(int byte)函数，可以在程序运行时分配更多的内存
+
+- malloc()分配内存但不会为其赋名，返回动态分配内存块的首字节地址；char
+
+- 指向void的指针，相当于通用指针
+
+- malloc()可用于返回数组的指针、指向结构的指针；分配内存失败，将返回空指针
+
+```c
+double *ptd;
+ptd = (double *) malloc(30 * sizeof(double));
+// 30个double型的内存块，并设置ptd指向该位置
+
+double item[n];
+ptd = (double *) malloc(n * sizeof(double));
+```
+
+- malloc()与free()配合使用；
+
+- free()函数的参数是之前malloc()返回的地址，该函数释放之前malloc()分配的内存
+
+- 动态分配内存的存储期从调用malloc()开始到free()结束
+
+- exit()函数，用于退出程序，stdlib.h
+
+- EXIT_FAILURE()的值也在stdlib.h中
+
+- C中不一定要使用强制类型转换(double *)，但是在C++中必须使用
+
+- free()位于程序的末尾，释放malloc()分配的内存
+
+- 静态内存的数量在编译时是固定的，在程序运行期间也不会改变
+- 自动变量使用的内存数量在程序执行期间自动增加或减少
+- 动态分配的内存数量只会增加，除非用free()释放
+
+- 忘记free，会造成内存泄露memory leak
+
+- calloc(size, sizeof (type))
+  - 返回指向char，指向void指针
+
+- calloc()把块中的所有位都设置为0
+
+- free()释放
+
+```c
+long * newmem;
+newmem = (long *) calloc(100, sizeof (long));
+```
+
+- 动态内存分配
+- 变长数组VLC，自动存储类型
+
+- VLC和调用malloc()在功能上有些重合
+
+```c
+int vlamal()
+{
+  int n;
+  int * pi;
+  scanf("%d", &n);
+  pi = (int *) malloc(n * sizeof(int));
+  int ar[n]; // 变长数组
+  pi[2] = ar[2] = -5;
+
+  free(pi);
+}
+```
+
+```c
+int n = 5;
+int m = 6;
+
+int ar2[n][m]; // 变长数组
+int (* p2)[6];
+int (* p3)[m];
+
+p2 = (int (*)[6]) malloc(n * 6 * sizeof(int)); // n x 6数组
+p3 = (int (*)[m]) malloc(n * m * sizeof(int)); // n x m数组
+
+ar[1][2] = p2[1][2] = 12;
+```
+
+- 存储类别与动态内存分配
+  - 静态存储类别所用内存编译时确定，程序结束时被销毁
+  - 自动存储类别，程序离开块时销毁，栈内存；
+  - 动态分配的内存调用malloc()分配，调用free()释放，由程序员管理。这部分内存比较破碎
+
+- 使用动态内存通常比栈内存慢
+
+- 程序将静态对象、自动对象、动态分配的对象储存在不同的区域
+
+- 静态数据占用一个区域
+- 自动数据占用另一个区域
+- 动态分配的数据占用自由内存
