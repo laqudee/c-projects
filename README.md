@@ -9,6 +9,14 @@ gcc -std=c11 [filename].c
 .\a.exe
 ```
 
+### mac
+```sh
+clang [filename].c
+# or
+gcc [filename].c
+./a.out 
+```
+
 ## VSCode launch 配置
 - `"program": "${workspaceFolder}/chapter-2/a.exe",`
   - 根据需要进行修改
