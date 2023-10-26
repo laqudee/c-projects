@@ -58,3 +58,19 @@ char greeting[50] = "Hello, and how are you today!";
 - 如果不修改字符串，不要用指针指向字符串字面量
 
 - 指针的值就是它存储的地址
+
+- 分配空间
+
+- gets()用于处理读取一行，puts
+
+- gets()无法检查数组是否装得下一行
+
+- 缓冲区溢出buffer overflow
+
+- fgets()代替gets()
+- gets_s()代替gets()
+
+- 空字符，用于标记C字符串末尾的字符；整数类型；占一个字节
+- 空指针，NULL，有一个值，该值不会与任何数据的有效地址对应；指针类型；地址占4个字节
+
+- gets_s()
