@@ -73,4 +73,28 @@ char greeting[50] = "Hello, and how are you today!";
 - 空字符，用于标记C字符串末尾的字符；整数类型；占一个字节
 - 空指针，NULL，有一个值，该值不会与任何数据的有效地址对应；指针类型；地址占4个字节
 
-- gets_s()
+- gets_s()没有fgets()方便
+
+- scanf("%s", str)
+- gets(str)
+- fgets(str, sizeof(str), stdin)
+
+- 字符串输出
+  - puts
+  - fputs
+  - printf
+
+- 自定义输入/输出函数
+  - 利用getchar() 与 putchar()
+
+++ 优先级高于*
+
+- 字符串函数
+  - strlen()，返回字符串长度
+  - strcat()，连接字符串
+  - strncat(bugs, addon, 13)
+  - strcmp()
+  - strncmp()
+  - strcpy()
+  - strncpy()
+  - sprintf()
