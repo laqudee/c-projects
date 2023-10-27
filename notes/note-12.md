@@ -293,3 +293,97 @@ ar[1][2] = p2[1][2] = 12;
 - stdatomic.h
 
 - 幂等性idempotent
+  - 多次使用同一限定符，多余的限定符将被忽略
+
+- 在指针和形参声明中使用const
+  - 限定指针本身还是限定指针指向的值为const
+
+```c
+const float *pf; // 创建了pf指向的值不能被改变，pf本身的值可以改变
+// 等同于上面
+float const *pf;
+float * const pt; // *pt是一个const指针，pt指向的值可以被改变 
+
+const float * const ptf; // 都不可以改变
+
+const int array [];
+// 等同于
+const int * array;
+```
+
+- 在一个文件中定义，在其他文件中使用extern 引用
+- 头文件中使用static const
+
+- volatile限定符，代理可以改变变量的值，通常用于硬件地址以及在其他程序或同时运行的线程中共享数据
+
+```c
+volatile int loc1; // 定义一个易变的位置
+volatile int *ploc; // *ploc是一个指向易变的位置的指针
+```
+
+- 编译器优化
+
+- 高速缓存
+
+- restrict允许编译器优化某部分代码以更好的支持计算
+  - 只能用于指针
+
+```c
+int ar[10];
+int *restrict restar = (int *) malloc(10 * sizeof(int));
+int *par = ar;
+```
+
+- 指针restar是访问由malloc()所分配内存的唯一且初始的方式
+
+- restrict限定符还可用于函数形参中的指针
+
+```c
+void *memcpy(void *restrict s1, const void *restrict s2, size_t n);
+void *memmove(void *s1, const void *s2, size_t n);
+```
+
+- _Atomic类型
+- 原子类型
+- 一个线程对一个原子类型的对象执行原子操作时，其他线程不能访问该对象
+
+```c
+_Atomic int hogs; // 定义一个原子类型的变量
+atomic_store(&hogs, 0); // 原子操作
+```
+
+- 旧关键字的新位置
+
+```c
+// c99之前
+void ofmouth(int *const a1, int * restrict a2, int n);
+
+// c99
+void ofmouth(int a1[const], int a2[restrict], int n);
+// 根据新标准，在声明函数形参时，指针表示法和数组表示法都可以使用这两个限定符
+```
+
+- 内存用于存储程序中的数据，由存储期、作用域、链接表征
+
+- 存储期可以是静态的、自动的或动态分配的
+
+- malloc()、free()
+
+- 作用域决定程序在哪些部分可以访问的数据
+  - 函数之外定义的，文件作用域
+  - 函数之内、块之内的，块作用域
+
+- 链接描述定义在程序某翻译单元中的变量可被链接的程度。
+
+- 具有块作用域的变量是局部变量，无链接。
+- 具有文件作用域的变量可以是内部链接或外部链接。
+- 内部链接意味着只有其定义所在的文件才能使用该变量。
+- 外部链接意味着其他文件使用也可以使用该变量。
+
+- 存储类别
+  - 自动
+  - 寄存器
+  - 静态、无链接
+  - 静态、外部链接
+  - 静态、内部链接
+  - 动态分配
