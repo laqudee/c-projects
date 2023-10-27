@@ -1,5 +1,7 @@
 # C Language Learn And Action
 
+> C Primer Plus 第6版 中文版
+
 ## Command Line 执行方式
 
 ```sh

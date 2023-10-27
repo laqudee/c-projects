@@ -137,3 +137,6 @@ fread(earnings, sizeof(double), 10 ,fp);
 
 - int feof(FILE *fp)
 - int ferror(FILE *fp)
+
+- 二进制I/O随机访问
+
