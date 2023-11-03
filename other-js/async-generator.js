@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import fetch from "node-fetch";
 /**
  * 异步迭代与generator
  *
@@ -93,7 +93,18 @@ async function* fetchCommits(repo) {
 }
 
 (async () => {
+  let count = 0;
   for await (let commit of fetchCommits("zigcc/awesome-zig")) {
     console.log(commit);
+    if (++count === 100) {
+      break;
+    }
   }
 })();
+
+
+/**
+ * generator  与  async generator
+ * 声明方式：function*(){}  ;  async function*(){}
+ * next()返回值:  { done: false, value: anyType }  ;  resolve成{value: anyType, done: Boolean}的Promise
+ */
