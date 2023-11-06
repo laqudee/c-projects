@@ -1,7 +1,7 @@
 {
   let user = {
     _name: "Guest",
-    get name() {
+    get name() {  // 指定的getter ，则被调用时receiver则为被调用时的this值
       return this._name;
     },
   };
