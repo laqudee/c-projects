@@ -187,3 +187,35 @@
   console.log(f1000.length);
   f1000(1, 2);
 }
+
+/**
+ * Reflect
+ * 内建对象，可以简化Proxy的创建
+ * Reflect对象调用的方法是内部方法的最小包装
+ * Reflect.get(obj, prop)
+ * Reflect.set(obj, prop, value)
+ * Reflect.has(obj, prop)
+ * Reflect.deleteProperty(obj, prop)
+ * Reflect.ownKeys(obj)
+ * Reflect.construct(F, value)
+ *
+ * 对于每个可被proxy捕获的内部方法，在Reflect中都有一个对应的方法，其名称和参数与Proxy捕捉器相同
+ */
+{
+  let user = {
+    name: "John",
+  };
+  user = new Proxy(user, {
+    get(target, prop, receiver) {
+      console.log("get", target, prop, receiver);
+      return Reflect.get(target, prop, receiver);
+    },
+    set(target, prop, value, receiver) {
+      console.log("set", target, prop, value, receiver);
+      return Reflect.set(target, prop, value, receiver);
+    },
+  });
+
+  let name = user.name;
+  user.name = "Pete";
+}
