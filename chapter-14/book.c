@@ -6,8 +6,8 @@
 
 struct book
 {
-    char title[MAXTITL];
-    char author[MAXAUTL];
+    char title[MAXTITL]; /* 书名的最大长度 +1*/
+    char author[MAXAUTL]; /* 作者姓名的最大长度 +1*/
     float value;
 };
 
@@ -21,9 +21,9 @@ int main(void)
     printf("Now enter the value.\n");
     scanf("%f", &library.value);
     printf("%s by %s: $%.2f\n", library.title,
-           library.author, library.value);
+        library.author, library.value);
     printf("%s: \"%s\" ($%.2f)\n", library.author,
-           library.title, library.value);
+        library.title, library.value);
     printf("Done.\n");
 
     return 0;
