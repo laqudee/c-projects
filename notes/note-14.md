@@ -138,3 +138,118 @@ void getinfo(struct namect *pst)
 - 该字符串都未存储在结构中，存储在malloc分配的内存块中
 
 - malloc() 与 free()配合使用
+
+- 复合字面量和结构
+- 复合字面量特性可用于结构和数组，如果只需要一个临时结构值，复合字面量很合适
+
+```c
+(struct book) {"The title", " The author", 6.99}
+```
+
+- 复合字面量在所有函数的外部，具有静态存储期；如果复合字面量在块中，则具有自动存储期。
+
+- 伸缩型数组成员flexible array member
+  - 该数组不会立即存在
+  - 这个伸缩型数组成员可以编写合适的代码
+
+- 伸缩型数组成员有如下规则：
+  - 必须是结构的最后一个成员；
+  - 结构中至少有一个成员；
+  - 伸缩数组的声明类似普通数组，只是它的方括号中是空的
+
+```c
+struct flex {
+  int count;
+  double average;
+  double scores[]; // 伸缩数组成员
+}
+```
+
+- 伸缩型数组成员，不能用结构进行赋值或者拷贝，确实要拷贝，使用memcpy()函数
+- 不能以按值方式把这种结构传递给结构
+- 不要使用带伸缩型数组成员的结构作为作为数组成员或另一个结构的成员
+
+- 匿名结构
+  - 是一个没有名称的结构成员
+
+```c
+struct person {
+  int id;
+  struct {char first[20]; char last[20;]}; // 匿名结构
+};
+
+// 初始化
+struct person joe = {123, {"Joe", "Smith"}};
+```
+
+- 使用结构数组的函数
+
+- 把结构内容保存到文件中
+  - fread()
+  - fwrite(&primer, sizeof(struct book), 1, pbook);
+
+
+- 链式结构
+  - 每个结构都包含一两个数据项和一两个指向其它同类结构的指针
+
+- 联合union
+  - 是一种数据类型，能在同一个内存空间中存储不同的数据类型
+  - 存储一些无规律，不知道顺序的混合类型
+
+```c
+union hold {
+  int digit;
+  float bigfl;
+  char letter;;
+};
+
+// use
+union hold fit;
+union hold save[10];
+union hold * pu;
+```
+
+- 可以初始化联合，但联合只能存储一个值，这与结构不同。初始化方法：
+  - 把一个联合初始化为另一个同类型的联合；
+  - 初始化联合的第一个元素
+  - 使用指定初始化器
+
+```c
+union hold valA;
+valA.letter = 'a';
+
+union hold valB = valA; // 用另一个联合来初始化
+union hold valC = {88}; // 初始化union的digit成员
+union hold valD = {.bigfl = 118.2}; // 指定初始化器
+
+// use
+fit.letter = 'a';
+fit.bigfl = 2.0;
+```
+
+- 用指针访问联合也要使用->运算符
+
+- 匿名联合
+  - 工作原理与匿名结构一样，是一个结构或联合的无名联合成员
+
+- 枚举类型enum
+  - 声明符号名称来表示整型常量
+
+```c
+enum day {SUN, MON, TUE, WED, THU, FRI, SAT};
+```
+
+- C枚举的一些特性并不适用于C++
+
+- 枚举底层就是常量，在switch中可以把枚举常量作为标签
+- 枚举的默认值是0，1，2，3...
+- 枚举可以赋值
+
+```c
+enum levels = {low = 100, medium = 500, high = 2000};
+
+enum feline = { cat, lynx = 10, puma, tiger}
+// out: 0, 10, 11, 12
+```
+
+- enum的目的是为了提供程序的可读性和可维护性
