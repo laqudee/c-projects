@@ -1,8 +1,0 @@
-{
-    "files.associations": {
-        "inttypes.h": "c",
-        "stdio.h": "c"
-    },
-    "clang-format.executable": "/opt/homebrew/Cellar/clang-format/17.0.6",
-    "editor.formatOnSave": true
-}
