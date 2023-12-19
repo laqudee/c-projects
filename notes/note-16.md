@@ -111,4 +111,80 @@
 #include "/usr/biff/p.h" // 查找/usr/biff目录
 ```
 
+- 头文件
+  - 明示常量
+  - 宏函数
+  - 函数声明
+  - 结构模板定义，标准I/O函数使用FILE结构
+  - 类型定义，指向FILE结构的指针作为参数
 
+- 程序可以通过修改`#define`指令的值即可生成可移植的代码
+- `#undef`指令取消之前的`#define`定义
+
+```c
+#define LIMIT 400
+
+#undef LIMIT // 取消LIMIT宏
+```
+
+- 条件编译
+  - 告诉编译器根据编译时的条件执行或忽略信息块
+
+```c
+#ifdef MAVIS
+  #include "horse"
+  #define STABLES 5
+#else
+  #include "cow.h"
+  #define STABLES 15
+#endif
+```
+
+- `#ifdef #else`与if else的区别：
+  - 预处理器不识别用于标识块的花括号（{}）
+
+- `#ifndef`指令
+  - 判断后面的标识符是否是未定义的，常用于定义之前未定义的常量
+
+```h
+#ifndef SIZE
+  #define SIZE 100
+#endif
+```
+
+- `#if`与`#elif`的区别：
+  - `#if`后面跟整型常量表达式，如果表达式为非零，则表达式为真
+
+- 预定义宏
+  - `__DATE__`
+  - `__FILE__`
+  - `__LINE__`
+  - `__TIME__`
+  - `__STDC__`
+  - `__STDC_HOSTED__`
+  - `__STDC_VERSION__`
+
+- `#line`指令重置__LINE__和__FILE__宏报告的行号和文件名
+
+```c
+#line 1000 // 把当前行号重置为1000
+#line 10 "cool.c" // 把行号重置为10， 把文件名重置为cool.c
+```
+
+- `#error`指令让预处理器发出一条错误消息
+
+```c
+#if __STDC_VERSION__ != 201112L
+#error Not C11
+#endif
+```
+
+- `#pragma`指令把编译器指令放入源代码中
+
+```c
+#pragma c9x on
+```
+
+- 范型选择，指那些没有特定类型，但是一旦指定一种类型，就可以转换成指定类型的代码。
+
+- 
