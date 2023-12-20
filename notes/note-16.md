@@ -187,4 +187,62 @@
 
 - 范型选择，指那些没有特定类型，但是一旦指定一种类型，就可以转换成指定类型的代码。
 
-- 
+- 内联函数
+  - inline function
+  - 把函数变成内联函数建议尽可能快的调用该函数
+
+- 使用函数说明符inline和存储类别说明符static
+
+```c
+#include <stdio.h>
+inline static void eatline() // 内联函数定义/原型
+{
+  while(getchar() != '\n')
+    continue;
+}
+
+int main(void)
+{
+  eatline();
+}
+```
+
+- 编译器查看内联函数的定义（也是原型），可能会用函数体中的代码替换eatline()函数调用。
+- inline
+- extern
+- _Noreturn，函数说明符
+
+- 访问C库
+  - 自动访问
+  - 文件包含
+  - 库包含
+
+- 数学库
+
+
+- 类型变体
+  - sqrtf()是sqrt()的float版本
+  - sqrtl()是sqrt()的long double版本
+
+- C11新增了范型选择表达式定义一个范型宏，根据参数类型选择最适合的数学函数版本
+  - _Generic表达式是实现tgmath.h最简单的方式
+
+- tgmath.h头文件中定义了范型类型宏
+
+- 通用工具库
+  - `stdlib.h`
+
+- exit()
+- atexit(Fn *)，通过退出时注册被调用的函数提供
+
+
+- qsort()函数，快排，对于大型数组而言，快速排序方法是最有效的排序算法之一
+  - 首先将数组分为两部分，一部分的值小于另一部分的值，循环这个过程
+
+```c
+void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, const void *));
+```
+
+- 函数名作为参数时即是指向该函数的指针
+
+- C与C++都可以将任何类型的指针赋给void类型的指针。但是C++要求在把void*指针赋给任何类型的指针时必须进行强制类型转换，而C不需要这样的要求
