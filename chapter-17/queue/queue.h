@@ -37,6 +37,6 @@ bool EnQueue(Item item, Queue *pq);
 bool DeQueue(Item *pitem, Queue *pq);
 
 /** delete all items from queue */
-void EmptyQueue(Queue *pq);
+void EmptyTheQueue(Queue *pq);
 
 #endif
