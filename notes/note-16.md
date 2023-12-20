@@ -246,3 +246,28 @@ void qsort(void *base, size_t nmemb, size_t size, int (*compar)(const void *, co
 - 函数名作为参数时即是指向该函数的指针
 
 - C与C++都可以将任何类型的指针赋给void类型的指针。但是C++要求在把void*指针赋给任何类型的指针时必须进行强制类型转换，而C不需要这样的要求
+
+- 断言库
+  - assert()
+
+- _Static_assert声明，可以在编译时检查assert()表达式
+
+- string.h库中的memcpy()和memmove()
+  - 不能把一个数组赋给另一个数组，所以要通过循环把数组中的每个元素赋给另一个数组相应的元素
+  - strcpy()
+  - strncpy()
+
+- 可变参数：stdarg.h
+  - 提供一个使用省略号的函数原型
+  - 在函数定义中创建一个va_list类型的变量
+  - 用宏把该变量初始化为一个参数列表
+  - 用宏访问参数列表
+  - 用宏完成清理工作
+
+```c
+void f1(int n, ...); // 有效
+int f2(const char * s, int k, ...); // 有效
+char f3(char c1, ..., char c2); // 无效，省略号不在最后
+double f3(...);// 无效，没有形参
+```
+
